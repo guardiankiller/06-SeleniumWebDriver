@@ -17,16 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Install Chrome
-      run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-    - name: Install dependencies
-      run: dotnet restore SeleniumBasicExercise.sln
     - name: Build
-      run: dotnet build SeleniumBasicExercise.sln --no-restore
-      
-    - name: Run tests
-      env:
-        CHROMEWEBDRIVER: /usr/bin/google-chrome
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build
+    - name: Test
+      run: dotnet test --no-build --verbosity quiet
