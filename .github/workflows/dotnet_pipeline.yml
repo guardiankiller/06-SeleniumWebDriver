@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout the code
       uses: actions/checkout@v4
@@ -26,6 +25,10 @@ jobs:
     - name: Build
       run: dotnet build
       
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Run TestProject1 tests
       env:
         CHROMEWEBDRIVER: /usr/bin/google-chrome
