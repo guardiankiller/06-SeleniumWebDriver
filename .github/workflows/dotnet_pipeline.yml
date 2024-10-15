@@ -19,5 +19,24 @@ jobs:
         dotnet-version: 8.0.x
     - name: Build
       run: dotnet build
-    - name: Test
-      run: dotnet test --no-build --verbosity quiet
+      
+    - name: Run TestProject1 tests
+      env:
+        CHROMEWEBDRIVER: /usr/bin/google-chrome
+      run: |
+        echo "Running TestProject1 tests"
+        dotnet test TestProject1/TestProject1.csproj --verbosity normal
+
+    - name: Run TestProject2 tests
+      env:
+        CHROMEWEBDRIVER: /usr/bin/google-chrome
+      run: |
+        echo "Running TestProject2 tests"
+        dotnet test TestProject2/TestProject2.csproj --verbosity normal
+
+    - name: Run TestProject3 tests
+      env:
+        CHROMEWEBDRIVER: /usr/bin/google-chrome
+      run: |
+        echo "Running TestProject3 tests"
+        dotnet test TestProject3/TestProject3.csproj --verbosity normal
